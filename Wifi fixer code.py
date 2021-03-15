@@ -1,10 +1,7 @@
-
 # Austin, Aiden
-
 import time
-
-#gets the curent time
+disconnect_log = []
+# gets the current time
 t = time.localtime()
 current_time = time.strftime("%H:%M:%S", t)
-#print(current_time) to get current time when needed
-
+# print(current_time) to get current time when needed
