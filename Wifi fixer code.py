@@ -12,7 +12,13 @@ disconnect_log.append(current_time)
 
 
 def connection_status():
-    socket.create_connection(("8.8.8.8",443))
+    try:
+        socket.create_connection(("8.8.8.8",443))
+        return 'True'
+    except OSError:
+        pass
+    return 'False'
 
+print(connection_status)
 
 
