@@ -15,7 +15,7 @@ disconnect_log.append(current_time)
 
 def connection_status():
     try:
-        socket.socket.connect(("8.8.8.8", 443))
+        socket.socket.connect(("8.8.8.8", 80))
         print("Connected")
     except:
         print("No connection")
