@@ -11,14 +11,19 @@ disconnect_log.append(current_time)
 # print(current_time) to get current time when needed
 
 
-def connection_status():
+def connection():
     try:
         socket.create_connection(("8.8.8.8",443))
-        return 'True'
-    except OSError:
-        pass
-    return 'False'
+    except:
+        print('no_connection')
 
-print(connection_status)
+def connection_status():
+    a_socket=socket.socket()
+    try:
+        a_socket.connection(("127.0.0.1", 80))
+    except:
+        print("No connection")
+
+print(connection_status())
 
 
