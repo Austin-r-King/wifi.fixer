@@ -12,12 +12,14 @@ disconnect_log.append(current_time)
 # print(current_time) to get current time when needed
 
 
-
 def connection_status():
+    a_socket = socket.socket()
     try:
-        socket.socket.connect(("8.8.8.8", 80))
+        a_socket.connect(("google.com", 80))
         print("Connected")
     except:
         print("No connection")
 
+
 print(connection_status())
+
