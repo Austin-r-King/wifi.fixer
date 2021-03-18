@@ -2,6 +2,8 @@
 
 import time
 import socket
+import winwifi
+
 
 disconnect_log = []
 # gets the current time
@@ -22,4 +24,5 @@ def connection_status():
 
 
 print(connection_status())
-
+def wifi_connect():
+    winwifi.WinWiFi.connect('ssid_of_the_router')
