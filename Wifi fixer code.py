@@ -1,11 +1,10 @@
 # Austin, Aiden
 
-
+import time
 import os
 import socket
 import sys
 import time
-
 from PyQt5.QtWidgets import QApplication, QWidget, QMessageBox
 
 disconnect_log = []
@@ -13,8 +12,6 @@ disconnect_log = []
 t = time.localtime()
 current_time = time.strftime("%H:%M:%S", t)
 disconnect_log.append(current_time)
-
-
 # print(current_time) to get current time when needed
 
 
@@ -64,5 +61,14 @@ def GUI():
         ex = App()
         sys.exit(app.exec_())
 
-
-print(GUI())
+forever=0
+while forever==0:
+    if print(connection_status())=="No connection":
+        print(print(current_time))
+        if print(GUI())=="Yes":
+            print(reconnect())
+        else:
+            forever=0
+    else:
+        forever = 0
+    time.sleep(2)
