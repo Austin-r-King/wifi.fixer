@@ -61,14 +61,16 @@ def GUI():
         ex = App()
         sys.exit(app.exec_())
 
-forever=0
-while forever==0:
-    if print(connection_status())=="No connection":
-        print(print(current_time))
-        if print(GUI())=="Yes":
-            print(reconnect())
+def run():
+    forever=0
+    while forever==0:
+        if print(connection_status())=="No connection":
+            print(current_time)
+            if print(GUI())=="Yes":
+                print(reconnect())
+            else:
+                forever=0
         else:
-            forever=0
-    else:
-        forever = 0
-    time.sleep(2)
+            forever = 0
+        time.sleep(2)
+print(run())
