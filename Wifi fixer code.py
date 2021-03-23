@@ -7,12 +7,7 @@ import sys
 import time
 from PyQt5.QtWidgets import QApplication, QWidget, QMessageBox
 
-disconnect_log = []
-# gets the current time
-t = time.localtime()
-current_time = time.strftime("%H:%M:%S", t)
-disconnect_log.append(current_time)
-# print(current_time) to get current time when needed
+
 
 
 # checks if connected to wifi
@@ -21,14 +16,20 @@ def connection_status():
     try:
         a_socket.connect(("google.com", 80))
         print("Connected")
+        time.sleep(5)
+        print(connection_status())
+        # Connected
     except:
-        print("No connection")
+        print("Not connected")
+        print(log())
 
 
 # resets wifi and connects
 def reconnect():
     var = os.popen("/usr/local/bin/resetinet.sh")
     print(var)
+    time.sleep(3)
+    print(connection_status())
 
 
 def GUI():
@@ -51,9 +52,11 @@ def GUI():
                                                QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
             if buttonReply == QMessageBox.Yes:
                 print('Yes')
+                print(reconnect())
             else:
                 print('No')
-
+                time.sleep(60)
+                print(connection_status())
             self.show()
 
     if __name__ == '__main__':
@@ -61,16 +64,13 @@ def GUI():
         ex = App()
         sys.exit(app.exec_())
 
-def run():
-    forever=0
-    while forever==0:
-        if print(connection_status())=="No connection":
-            print(current_time)
-            if print(GUI())=="Yes":
-                print(reconnect())
-            else:
-                forever=0
-        else:
-            forever = 0
-        time.sleep(2)
-print(run())
+def log():
+    disconnect_log = []
+    # gets the current time
+    t = time.localtime()
+    current_time = time.strftime("%H:%M:%S", t)
+    disconnect_log.append(current_time)
+    print(GUI())
+    # print(current_time) to get current time when needed
+
+print(connection_status())
